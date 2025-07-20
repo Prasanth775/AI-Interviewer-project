@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interviewer</title>
+    <style>
+        body {
+            background-color:aqua;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;   
+        }
+        h2 {
+            color: #333;ss
+        }
+        form {
+            margin: 20px 0;
+        }
+        input[type="file"] {
+            margin: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .questions {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: left;
+            display: inline-block;
+            width: 80%;
+        }
+    </style>
+</head>
+<body style="background-image: url('C:/Users/j.prasanthkumar/demo/thirdproject/pngtree-blue-artificial-intelligence-technology-ai-robot-banner-image_196890.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <h1 style="color:red">Hi iam AI(PRASHU)</h1>
+    <h2> Please Upload Your Resume</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="resume" required>
+        <button type="submit">Start Interview</button>
+    </form>
+    
+    <hr>
+
+    {% if questions %}
+        <h3>AI-Generated Interview Questions:</h3>
+        <div class="questions">
+            <ul>
+                {% for question in questions %}
+                    <li>{{ question }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <footer>
+        <p align="left" style="color:red">This is developed by prasanth</p>
+    </footer>
+</body>
+</html>
